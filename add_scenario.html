@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- Material Kit CSS -->
+    <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+        <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+        <div class="logo">
+            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                USER_NAME
+            </a>
+            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                Automation Testing
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#0">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="add_scenario.html">
+                        <i class="material-icons">content_copy</i>
+                        <p>Add test scenario</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="list_scenario.html">
+                        <i class="material-icons">content_copy</i>
+                        <p>List test scenario</p>
+                    </a>
+                </li>
+                <!-- your sidebar here -->
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:;">Dashboard</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:;">
+                                <i class="material-icons">notifications</i> Notifications
+                            </a>
+                        </li>
+                        <!-- your navbar here -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Add testing scenario</h4>
+                                <p class="card-category">Complete the following fields</p>
+                            </div>
+                            <div class="card-body">
+                                <form id = "add_testing_scenario">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nume scenariu</label>
+                                                <input type="text" class="form-control" id = "scene_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary pull-right" id = "add_scenario">Add scenario</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Configure testing scenario</h4>
+                                <p class="card-category">Complete the following fields</p>
+                            </div>
+                            <div class="card-body">
+                                <form action="" id="configure_scenario">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">ID scenariu</label>
+                                            <input type="text" class="form-control" id="scene_id" value="1"
+                                                   required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <label class="bmd-label-floating">Add GUI elements (please provide the
+                                                same name as in the next files)</label><br/>
+                                            <input type="file" name="gui_elements" id="gui_elements" multiple>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <label class="bmd-label-floating">Add input filled elements (please
+                                                provide the same name as in the next files)</label><br/>
+                                            <input type="file" name="input_fileds" id="input_fileds" multiple>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <label class="bmd-label-floating">Add video of scenario </label><br/>
+                                            <input type="file" name="video" id="video">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <label class="bmd-label-floating">Add cursor</label><br/>
+                                            <input type="file" name="cursor" id="cursor">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Functions</label>
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating"> API Functions: </label>
+                                                <textarea class="form-control" id="functions" placeholder="
+                                                    Liniile acestui fișier vor respecta următorul format: <nume element> <nume pagina> <nume functie apelata>(<parametru 1>,     <parametru 2>, …)
+                                                    Login_Button LoginPage loginWithEmailAndPass(Email_TextField, Password_TextField)
+                                                    " rows="5" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Pages</label>
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating"> Elements location: </label>
+                                                <textarea class="form-control" id="pages" placeholder="
+                                                     Fiecare linie a acestui fișier va conține numele unui element urmat de numele paginilor în care se regăsește elementul respectiv. Dacă un element se află pe mai multe pagini, numele acestora vor fi delimitate de câte un caracter “space”.
+                                                     Un exemplu de astfel de linie din fișier este următoarea:
+
+                                                     Register_Button HomePage RegisterPage
+                                                    " rows="8" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" id="update_scenario" class="btn btn-primary pull-right">Update
+                                    Profile
+                                </button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="float-left">
+                    <ul>
+                        <li>
+                            <a href="https://www.creative-tim.com">
+                                Automation Testing
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright float-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    , made with <i class="material-icons">favorite</i> by
+                    <a href="https://www.creative-tim.com" target="_blank">Automation Testing</a> for a better web.
+                </div>
+                <!-- your footer here -->
+
+                <!--   Core JS Files   -->
+                <script src="assets/js/core/jquery.min.js"></script>
+                <script src="assets/js/core/popper.min.js"></script>
+                <script src="assets/js/core/bootstrap-material-design.min.js"></script>
+                <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+                <!-- Plugin for the momentJs  -->
+                <script src="assets/js/plugins/moment.min.js"></script>
+                <!-- Forms Validations Plugin -->
+                <script src="assets/js/plugins/jquery.validate.min.js"></script>
+                <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+                <script src="assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+                <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+                <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+                <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+                <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+
+                <script type="text/javascript">
+                    async function postData(url = '', data = {}, head = {'Content-Type': 'application/json'}) {
+                        // Default options are marked with *
+                        const response = await fetch(url, {
+                            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                            mode: 'cors', // no-cors, *cors, same-origin
+                            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                            credentials: 'same-origin', // include, *same-origin, omit
+                            headers: head,
+                            redirect: 'follow', // manual, *follow, error
+                            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                            body: JSON.stringify(data) // body data type must match "Content-Type" header
+                        });
+                        return response.json(); // parses JSON response into native JavaScript objects
+                    }
+                </script>
+
+                <script type="text/javascript">
+                    $("#add_testing_scenario").submit(function(e) {
+                        e.preventDefault();
+                        let userId = 3;
+                        let body = {
+                            'user_id': userId,
+                            'scene_name': $("#scene_name").val(),
+                        };
+
+                        postData('http://localhost:5000/create/scene', body);
+                    })
+                </script>
+                <script type="text/javascript">
+                    let base64guiElements = [];
+                    let base64inputFilledsElements = [];
+                    let cursorElements = [];
+
+                    let cursorFile;
+
+                    $("#gui_elements").change(function () {
+                        base64guiElements = [];
+                        let functionsValue = "";
+                        let pagesValue = "";
+                        let guiElements = $("#gui_elements").prop('files');
+                        for (let fileIndex = 0; fileIndex < guiElements.length; fileIndex++) {
+                            functionsValue += (guiElements[fileIndex].name).substring(0, (guiElements[fileIndex].name).indexOf('.')) + " ___PageThatContainsElement _____Function(param1, param2) \n";
+                            pagesValue += (guiElements[fileIndex].name).substring(0, (guiElements[fileIndex].name).indexOf('.')) + " PageThatContainsElement PageThatContainsElement \n";
+                        }
+                        getBase64(guiElements, 'gui').then(function (res) {
+                            console.log(base64guiElements);
+                        });
+
+                        $("#functions").val(functionsValue);
+                        $("#pages").val(pagesValue);
+                    });
+
+                    $("#input_fileds").change(function () {
+                        base64inputFilledsElements = [];
+                        let guiElements = $("#input_fileds").prop('files');
+                        getBase64(guiElements, 'inputs').then(function (res) {
+                            console.log(base64inputFilledsElements);
+                        });
+                    });
+
+                    $("#cursor").change(function () {
+                        let guiElements = $("#cursor").prop('files');
+                        getBase64(guiElements, 'cursor').then(function (res) {
+                            console.warn(cursorFile);
+                        });
+                    });
+
+                    $("#configure_scenario").submit(function (e) {
+                        e.preventDefault();
+                        let guiElements = $("#gui_elements").prop('files');
+                        let userId = 2;
+                        let postBody = {
+                            'scene_id': $("#scene_id").val(),
+                            'user_id': userId,
+                            'element_type': '',
+                            'base64string': ''
+                        };
+
+                        // upload cursor
+                        postBody['element_type'] = 'cursor';
+                        postBody['base64string'] = cursorFile;
+                        postData('http://localhost:5000/upload/cursor', postBody);
+
+                        // upload gui_elements
+                        let uploadedElement, fileName;
+                        for (let i = 0; i < base64guiElements.length; i++) {
+                            uploadedElement = base64guiElements[i];
+                            fileName = Object.keys(uploadedElement)[0];
+
+
+                            postBody['element_type'] = fileName;
+                            postBody['base64string'] = uploadedElement[fileName];
+                            postData('http://localhost:5000/upload/elements', postBody);
+                        }
+
+                        for (let i = 0; i < base64inputFilledsElements.length; i++) {
+                            uploadedElement = base64inputFilledsElements[i];
+                            fileName = Object.keys(uploadedElement)[0];
+
+
+                            postBody['element_type'] = fileName;
+                            postBody['base64string'] = uploadedElement[fileName];
+                            postData('http://localhost:5000/upload/input_fileds', postBody);
+                        }
+
+
+                        // upload
+
+                        let formData = new FormData();
+
+                        let video = $("#video").prop('files')[0];
+
+                        formData.append('video', video, 'app_rec');
+                        formData.append('scene_id', $("#scene_id").val());
+                        formData.append('user_id', "" + userId + "");
+                        formData.append('element_type', 'app_rec');
+
+                        console.log(formData.getAll('element_type'));
+                        fetch('http://localhost:5000/upload/video', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        // upload functions
+                        postBody['actions'] = $("#functions").val();
+                        postData('http://localhost:5000/upload/actions/functions', postBody);
+
+                        // upload pages
+                        postBody['actions'] = $("#pages").val();
+                        postData('http://localhost:5000/upload/actions/pages', postBody);
+
+                    });
+
+                    async function getBase64(imagesList, type) {
+                        for (let fileIndex = 0; fileIndex < imagesList.length; fileIndex++) {
+                            let file = imagesList[fileIndex];
+                            let reader = new FileReader();
+                            await reader.readAsDataURL(file);
+                            reader.onload = function () {
+                                base64StartIndex = reader.result.indexOf("64,") + 3;
+                                base64 = reader.result.substr(base64StartIndex);
+                                fileName = file.name;
+                                fileName = fileName.substring(0, fileName.indexOf('.'));
+                                if (type === 'gui') {
+                                    base64guiElements.push({[fileName]: base64});
+                                } else if (type === 'inputs') {
+                                    base64inputFilledsElements.push({[fileName]: base64});
+                                } else if (type === 'cursor') {
+                                    cursorFile = base64;
+                                    //console.log(cursorFile);
+                                }
+                            };
+                            reader.onerror = function (error) {
+                                console.error('Error: ', error);
+                            };
+                        }
+
+                    }
+
+                    async function buildBase64List(imagesList) {
+                        let base64guiElements = [];
+                        let base64, file;
+
+
+                        return base64guiElements;
+                    }
+
+
+                </script>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+
+</html>
