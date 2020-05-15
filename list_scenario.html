@@ -176,6 +176,17 @@
                 </script>
 
                 <script type="text/javascript">
+                    function run_test(sceneId) {
+                        let userId = localStorage.getItem('userId');
+                        alert('Scene started to execute. Please recheck in a few minutes!');
+                        postData('http://localhost:5000/run/scene', {
+                            'user_id': userId,
+                            'scene_id': sceneId
+                        }).then(function (res) {
+                            alert(res.message);
+                        });
+                    }
+
                     let scenesList = $("#scenesList");
 
                     postData('http://localhost:5000/get/scenes', {'user_id': 1}).then(function (res) {
@@ -183,11 +194,12 @@
                         let tableRow;
 
                         for (let i in scenes) {
+                            index = parseInt(i) + 1;
                             tableRow = "<tr>" +
-                                "                                            <td>" + (i) + "</td>" +
+                                "                                            <td>" + (index) + "</td>" +
                                 "                                               <td>" + scenes[i] + "</td>" +
                                 "                                            <td class=\"text-primary\">" +
-                                "                                                <a href='#' onclick = run_test(" + i + ")> Run test </a>" +
+                                "                                                <a href='#' onclick = run_test(" + index + ")> Run test </a>" +
                                 "                                            </td>" +
                                 "                 </tr>";
                             scenesList.append(tableRow);
