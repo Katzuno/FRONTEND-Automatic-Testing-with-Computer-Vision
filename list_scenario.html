@@ -89,6 +89,29 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Add testing scenario</h4>
+                                <p class="card-category">Complete the following fields</p>
+                            </div>
+                            <div class="card-body">
+                                <form id = "add_testing_scenario">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">API calls</label>
+                                                <textarea type="text" class="form-control" id = "api_calls" rows="10" style="width: 500px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
@@ -187,6 +210,16 @@
                         });
                     }
 
+                    function get_results(sceneId) {
+                        let userId = localStorage.getItem('userId');
+                        postData('http://localhost:5000/get/scene/output', {
+                            'user_id': userId,
+                            'scene_id': sceneId
+                        }).then(function (res) {
+                            $("#api_calls").val(res.output);
+                        });
+                    }
+
                     let scenesList = $("#scenesList");
 
                     postData('http://localhost:5000/get/scenes', {'user_id': 1}).then(function (res) {
@@ -199,7 +232,8 @@
                                 "                                            <td>" + (index) + "</td>" +
                                 "                                               <td>" + scenes[i] + "</td>" +
                                 "                                            <td class=\"text-primary\">" +
-                                "                                                <a href='#' onclick = run_test(" + index + ")> Run test </a>" +
+                                "                                                <a href='#' style = 'border: 1px solid black' onclick = run_test(" + index + ")> Run test </a>"  +
+                                "                                                <a href = '#' style = 'border: 1px solid black'  onclick = get_results(" + index + ")> Get scenes results </a>" +
                                 "                                            </td>" +
                                 "                 </tr>";
                             scenesList.append(tableRow);
